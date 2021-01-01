@@ -238,10 +238,7 @@ pub fn gen_doc_oj_verify(
             "" => "\n".to_owned(),
             doc => doc
                 .lines()
-                .map(|line| match line {
-                    "" => "\n".to_owned(),
-                    line => line.trim_start().to_owned() + "\n",
-                })
+                .map(|s| s.strip_prefix(' ').unwrap_or(s).to_owned() + "\n")
                 .join(""),
         };
 
